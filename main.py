@@ -66,8 +66,8 @@ def website_checker():
     cars_raw = requests.get(_create_filter_string()).content
     cars_parsed = BeautifulSoup(cars_raw, "html.parser")
     cars_list = cars_parsed.find_all("div", class_="NCICard__information")
+    print(f"Found {len(cars_list)} vehicles available")
     checked_cars = _load_product_ids()
-    print(f"Found {len(checked_cars)} vehicles available")
 
     for vehicle in cars_list:
         vehicle_url = vehicle.find("a", class_="NCICard__name").get("href")
