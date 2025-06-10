@@ -61,11 +61,13 @@ def _record_product_id(new_product_id: str) -> None:
 
 
 def website_checker():
+    print("Starting new check")
     threading.Timer(CHECK_INTERVAL, website_checker).start()
     cars_raw = requests.get(_create_filter_string()).content
     cars_parsed = BeautifulSoup(cars_raw, "html.parser")
     cars_list = cars_parsed.find_all("div", class_="NCICard__information")
     checked_cars = _load_product_ids()
+    print(f"Found {len(checked_cars)} vehicles available")
 
     for vehicle in cars_list:
         vehicle_url = vehicle.find("a", class_="NCICard__name").get("href")
