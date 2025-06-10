@@ -11,6 +11,7 @@ from filters import (
     FUEL_FILTER,
     GEARBOX_FILTER,
     MODEL_FILTER,
+    TRIM_FILTER
 )
 from notification import send_notification
 
@@ -74,6 +75,10 @@ def website_checker():
         product_id = _extract_product_id(vehicle_url)
         # Skip this vehicle if we've already checked it out
         if product_id in checked_cars:
+            continue
+        # Skip this vehicle if the trim level doesn't match
+        vehicle_trim = vehicle.find("span", class_="NCICard__version").text.split(" ")[0]
+        if len(TRIM_FILTER) > 0 and vehicle_trim not in [t.value for t in TRIM_FILTER]:
             continue
 
         print(f"Checking new car ({product_id})")

@@ -41,6 +41,11 @@ class Colour(Enum):
     White = "FFFFFF"
 
 
+class Trim(Enum):
+    Expression = "expression"
+    Extreme = "extreme"
+    Journey = "journey"
+
 class Extras(Enum):
     Sunroof = "Panoramic opening sunroof"
     TwoTone = "Two tone Black roof"
