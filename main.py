@@ -17,7 +17,7 @@ from notification import send_notification
 ## CONFIGURATION
 BASE_URL = "https://www.dacia.co.uk"
 PRODUCT_ID_FILE = "checked_ids.txt"
-CHECK_INTERVAL = os.getenv("DACIA_CHECK_INTERVAL", 1800)
+CHECK_INTERVAL = int(os.getenv("DACIA_CHECK_INTERVAL", 1800))
 
 
 def _create_filter_string() -> str:
