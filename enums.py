@@ -46,6 +46,10 @@ class Trim(Enum):
     Extreme = "extreme"
     Journey = "journey"
 
+
 class Extras(Enum):
-    Sunroof = "Panoramic opening sunroof"
-    TwoTone = "tone Black roof"
+    Sunroof = {
+        "name": "Panoramic Sunroof",
+        "search_string": "Panoramic opening sunroof",
+    }
+    TwoTone = {"name": "Two Tone Black Roof", "search_string": "tone Black roof"}

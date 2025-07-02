@@ -11,7 +11,7 @@ from filters import (
     FUEL_FILTER,
     GEARBOX_FILTER,
     MODEL_FILTER,
-    TRIM_FILTER
+    TRIM_FILTER,
 )
 from notification import send_notification
 
@@ -77,7 +77,9 @@ def website_checker():
         if product_id in checked_cars:
             continue
         # Skip this vehicle if the trim level doesn't match
-        vehicle_trim = vehicle.find("span", class_="NCICard__version").text.split(" ")[0]
+        vehicle_trim = vehicle.find("span", class_="NCICard__version").text.split(" ")[
+            0
+        ]
         if len(TRIM_FILTER) > 0 and vehicle_trim not in [t.value for t in TRIM_FILTER]:
             continue
 
@@ -87,16 +89,14 @@ def website_checker():
         vehicle_detail_raw = requests.get(f"{BASE_URL}{vehicle_url}").content
         vehicle_detail = BeautifulSoup(vehicle_detail_raw, "html.parser")
 
-        vehicle_extras = vehicle_detail.find_all(
-            "p", class_="EquipmentCardItem__label"
-        )
+        vehicle_extras = vehicle_detail.find_all("p", class_="EquipmentCardItem__label")
         vehicle_extras_list = [e.string for e in vehicle_extras]
 
         vehicle_matches = []
         for extra in EXTRAS_FILTER:
-            match = any(extra.value in s for s in vehicle_extras_list)
+            match = any(extra.value["search_string"] in s for s in vehicle_extras_list)
             vehicle_matches.append(match)
-            print(f"{'[YES]' if match else '[NO]'} {extra.value}")
+            print(f"{'[YES]' if match else '[NO]'} {extra.value['name']}")
 
         if False in vehicle_matches:
             # Record this vehicle so we can skip it next time
