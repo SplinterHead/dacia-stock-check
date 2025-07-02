@@ -87,15 +87,14 @@ def website_checker():
         vehicle_detail_raw = requests.get(f"{BASE_URL}{vehicle_url}").content
         vehicle_detail = BeautifulSoup(vehicle_detail_raw, "html.parser")
 
-        vehicle_options = vehicle_detail.find("div", class_="Tabs__content is-active")
-        vehicle_extras = vehicle_options.find_all(
+        vehicle_extras = vehicle_detail.find_all(
             "p", class_="EquipmentCardItem__label"
         )
         vehicle_extras_list = [e.string for e in vehicle_extras]
 
         vehicle_matches = []
         for extra in EXTRAS_FILTER:
-            match = extra.value in vehicle_extras_list
+            match = any(extra.value in s for s in vehicle_extras_list)
             vehicle_matches.append(match)
             print(f"{'[YES]' if match else '[NO]'} {extra.value}")
 

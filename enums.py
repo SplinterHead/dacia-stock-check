@@ -48,4 +48,4 @@ class Trim(Enum):
 
 class Extras(Enum):
     Sunroof = "Panoramic opening sunroof"
-    TwoTone = "Two tone Black roof"
+    TwoTone = "tone Black roof"
