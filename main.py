@@ -37,7 +37,7 @@ def _create_filter_string() -> str:
         )
     if len(COLOUR_FILTER) > 0:
         query_strings.append(
-            f"colorMarketing.hexaCode={'%2C'.join([c.value for c in COLOUR_FILTER])}"
+            f"colorMarketing.group={'%2C'.join([c.value for c in COLOUR_FILTER])}"
         )
 
     filter_url = f"{BASE_URL}/new-stock.html?{'&'.join(query_strings)}"

@@ -31,14 +31,14 @@ class Gearbox(Enum):
 class Colour(Enum):
     # Filter: colorMarketing.hexaCode=000000
     # Multiple: colorMarketing.hexaCode=000000%2C008000
-    Black = "000000"
-    Blue = "4348E0"
-    Green = "008000"
-    Grey = "CFCFCF"
-    Orange = "EB700C"
-    Red = "FF0000"
-    Sandstone = "996216"
-    White = "FFFFFF"
+    Black = "BLACK"
+    Blue = "BLUE"
+    Green = "GREEN"
+    Grey = "GREY"
+    Orange = "ORANGE"
+    Red = "RED"
+    Sandstone = "BROWN"
+    White = "BLANC%2CWHITE"
 
 
 class Trim(Enum):
