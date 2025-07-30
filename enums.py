@@ -52,4 +52,4 @@ class Extras(Enum):
         "name": "Panoramic Sunroof",
         "search_string": "Panoramic opening sunroof",
     }
-    TwoTone = {"name": "Two Tone Black Roof", "search_string": "tone Black roof"}
+    TwoTone = {"name": "Two-Tone Black Roof", "search_string": "tone Black roof"}
